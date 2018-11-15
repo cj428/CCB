@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+	targetNamespace="urn://ccb.org.co/services/sipref/obtenerevidencias/v1.0"
+	xmlns:tns="urn://ccb.org.co/services/sipref/obtenerevidencias/v1.0"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	
+	<xsd:element name="obtenerEvidenciasRq" type="tns:ObtenerEvidenciasRq_Type" />
+	
+	<xsd:element name="obtenerEvidenciasRs" type="tns:ObtenerEvidenciasRs_Type" />
+			
+	<xsd:complexType name="ObtenerEvidenciasRq_Type">
+		<xsd:sequence>
+			<xsd:element name="metadata" minOccurs="1" maxOccurs="1" type="tns:metadata_Type"/>
+			<xsd:element name="obtenerEvidenciasInp" minOccurs="1" maxOccurs="1" type="tns:obtenerEvidenciasInp_Type"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="metadata_Type">
+		<xsd:sequence>
+		    <xsd:element name="transactionID" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="version" type="xsd:string" minOccurs="0" maxOccurs="1"/>						
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="obtenerEvidenciasInp_Type">
+		<xsd:sequence>
+			<xsd:element name="numReferencia" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+			<xsd:element name="tipoReferencia" minOccurs="0" maxOccurs="1" type="xsd:string"/>
+			<xsd:element name="idServicioNegocio" minOccurs="0" maxOccurs="1" type= "xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ObtenerEvidenciasRs_Type">
+		<xsd:sequence>
+			<xsd:element name="metadata" minOccurs="1" maxOccurs="1" type="tns:metadata_Type" />
+			<xsd:element name="obtenerEvidencias" minOccurs="1" maxOccurs="1" type="tns:obtenerEvidenciasOut_Type" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="obtenerEvidenciasOut_Type">
+		<xsd:sequence>
+			<xsd:element name="statusResult" minOccurs="1" maxOccurs="1" type="tns:statusResult_Type" />
+			<xsd:element name="idEvidencia" type="xsd:string" minOccurs="0" maxOccurs="1"/>	
+			<xsd:element name="idEstadoEvidencia" type="xsd:string" minOccurs="0" maxOccurs="1"/>	
+			<xsd:element name="idTipoReferencia" type="xsd:string" minOccurs="0" maxOccurs="1"/>	
+			<xsd:element name="idTipoSolicitud" type="xsd:string" minOccurs="0" maxOccurs="1"/>	
+			<xsd:element name="nombreSolicitud" type="xsd:string" minOccurs="0" maxOccurs="1"/>	
+			<xsd:element name="fechaRegistro"  type="xsd:string" minOccurs="0" maxOccurs="1"/>	
+			<xsd:element name="informacionTramite" minOccurs="0" maxOccurs="1" type="tns:informacionTramite_Type" />
+			<xsd:element name="detalleNotificaciones" minOccurs="0" maxOccurs="1" type="tns:detalleNotificaciones_Type" />
+			<xsd:element name="informacionDireccion" minOccurs="0" maxOccurs="unbounded" type="tns:informacionDireccion_Type" />
+			<xsd:element name="informacionCliente" minOccurs="0" maxOccurs="1" type="tns:informacionCliente_Type" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="statusResult_Type">
+		<xsd:sequence>
+			<xsd:element name="codigoError" type="xsd:string" minOccurs="1" maxOccurs="1"/>	
+			<xsd:element name="mensajeError" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="informacionTramite_Type">
+		<xsd:sequence>
+			<xsd:element name="numReferencia" type="xsd:string" minOccurs="0" maxOccurs="1"/>	
+			<xsd:element name="idServicioNegocio" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="nombreServicioNegocio" type="xsd:string" minOccurs="0" maxOccurs="1"/>	
+			<xsd:element name="idSucursal" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="detalleNotificaciones_Type">
+		<xsd:sequence>
+			<xsd:element name="idCorreoElectronico" type="xsd:string" minOccurs="0" maxOccurs="1"/>	
+			<xsd:element name="idMensajeTexto" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="contenidoCorreoElectronico" type="xsd:string" minOccurs="0" maxOccurs="1"/>	
+			<xsd:element name="contenidoMensajeTexto" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="estadoCorreoElectronico" type="xsd:string" minOccurs="0" maxOccurs="1"/>	
+			<xsd:element name="fechaProcesoCorreo" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="tiempoProcesoCorreo" type="xsd:string" minOccurs="0" maxOccurs="1"/>	
+			<xsd:element name="estadoMensajeTexto" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="fechaProcesoMensajeTexto" type="xsd:string" minOccurs="0" maxOccurs="1"/>	
+			<xsd:element name="tiempoProcesoMensajeTexto" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="informacionDireccion_Type">
+		<xsd:sequence>
+			<xsd:element name="idTipoDireccion" type="xsd:string" minOccurs="0" maxOccurs="1"/>	
+			<xsd:element name="esHistorico" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="direccion" type="xsd:string" minOccurs="0" maxOccurs="1"/>	
+			<xsd:element name="fechaRegistro" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="esCorreo" type="xsd:string" minOccurs="0" maxOccurs="1"/>	
+			<xsd:element name="enviaNotificacion" type="xsd:boolean" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="motivoNotificacion" type="xsd:string" minOccurs="0" maxOccurs="1"/>	
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="informacionCliente_Type">
+		<xsd:sequence>
+			<xsd:element name="nombreCliente" type="xsd:string" minOccurs="0" maxOccurs="1"/>	
+			<xsd:element name="nombrePagador" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="numeroMatricula" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="fechaMatricula" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
